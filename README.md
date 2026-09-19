@@ -1,293 +1,242 @@
-System Capacity & Care Load Analytics
+# System Capacity & Care Load Analytics
 
-End-to-end data analytics, forecasting, and Streamlit dashboard project for analyzing system capacity, care load, operational pressure, and short-term trends.
+## Project Overview
 
-🚀 Links
+**System Capacity & Care Load Analytics** is a data analytics and forecasting project designed to analyze operational workload and capacity pressure within the Unaccompanied Children (UAC) care system.
 
-Live Dashboard: https://4safzfdvzdcobzeghwj3jm.streamlit.app/
+The project uses historical data related to children in CBP custody, HHS care, transfers, and discharges to understand system load, identify high-pressure periods, measure operational trends, and forecast future care-system demand.
 
-GitHub Repository: https://github.com/Roshan943985/System-Capacity-Care-Load-Analytics
+## Business Problem
 
-📌 Project Overview
+A sudden increase in children entering the care system can create operational pressure on available resources and care capacity.
 
-This project analyzes daily operational data across CBP custody and HHS care. The workflow covers data cleaning, validation, feature engineering, exploratory analysis, KPI development, visualization, ARIMA forecasting, and deployment as an interactive Streamlit dashboard.
+This project answers questions such as:
 
-🎯 Objectives
+- What is the overall system care load?
+- When does the system experience peak pressure?
+- How does HHS care load change over time?
+- Are inflows consistently higher than outflows?
+- Which periods require greater operational attention?
+- What could future system load look like?
 
-Measure total system care load.
+## Project Objectives
 
-Analyze CBP custody and HHS care trends.
+- Clean and prepare historical UAC data.
+- Calculate important operational KPIs.
+- Analyze system capacity and care-load trends.
+- Identify pressure and high-load periods.
+- Study relationships between operational variables.
+- Perform monthly performance analysis.
+- Forecast future system load using ARIMA.
+- Build an interactive Streamlit dashboard.
 
-Measure daily inflow/outflow balance using Net Daily Intake.
+## Dataset & Preprocessing
 
-Identify high-pressure operational periods.
+The processed dataset contains:
 
-Compare monthly performance.
+- **720 records**
+- **12 analytical columns**
+- Date range: **January 2023 – December 2025**
 
-Examine relationships between operational variables.
+Derived analytical metrics include:
 
-Generate a six-month ARIMA forecast.
+- Total System Load
+- Net Daily Intake
+- Care Load Growth Rate
+- 7-Day Rolling Load
+- 14-Day Rolling Load
+- Backlog Indicator
 
-Communicate results through an interactive dashboard.
+## Key KPIs
 
-📊 Dataset
+| KPI | Result |
+|---|---:|
+| Peak System Load | **11,762** |
+| Lowest System Load | **2,002** |
+| Average System Load | **6,232.77** |
+| Peak HHS Care | **11,516** |
+| Average HHS Care | **6,061.28** |
+| Total HHS Discharges | **124,853** |
+| Average Daily Discharges | **173.41** |
+| Pressure Days | **238** |
 
-Records: 720 daily observations
+The highest recorded system load occurred on **20 December 2023**.
 
-Date range: 12 January 2023 – 21 December 2025
+## Pressure Analysis
 
-Core fields include Date, CBP custody, CBP transfers, HHS Care, and HHS discharges.
+**Net Daily Intake** was used to understand changes in system pressure from daily inflow relative to outflow.
 
-Derived fields include Total System Load, Net Daily Intake, Care Load Growth Rate, 7-Day Rolling Load, 14-Day Rolling Load, and Backlog Indicator.
+Key results:
 
-🔎 Key Results
+- Positive intake days: **238**
+- Negative intake days: **475**
+- Zero intake days: **7**
+- Highest-pressure day: **12 February 2024**
+- Highest Net Daily Intake: **206**
 
-KPI
+This analysis helps identify periods where additional operational capacity may be required.
 
-Result
+## Monthly Analysis
 
-Peak Total System Load
+Monthly aggregation was performed to identify long-term trends and changes in system workload.
 
-11,762
+### Highest Monthly Average System Load
 
-Peak Load Date
+**December 2023 — 11,255.26**
 
-20 Dec 2023
+### Lowest Monthly Average System Load
 
-Lowest Total System Load
+**August 2025 — 2,026.90**
 
-2,002
+The analysis shows a substantial reduction in system load from the peak period to later periods.
 
-Average Total System Load
+## Correlation Analysis
 
-6,232.77
+Correlation analysis was performed to understand relationships between operational variables and Total System Load.
 
-Peak HHS Care
+The strongest relationship was observed between:
 
-11,516
+**HHS Care ↔ Total System Load: 0.9995**
 
-Average HHS Care
-
-6,061.28
-
-Total HHS Discharges
-
-124,853
-
-Average Daily HHS Discharges
-
-173.41
-
-Maximum Daily HHS Discharges
-
-505
-
-Average Net Daily Intake
-
--44.74
-
-Pressure Days
-
-33.06%
-
-Highest Net Intake
-
-206 on 12 Feb 2024
-
-📈 Analysis
-
-Data Cleaning & Feature Engineering
-
-Date parsing and validation
-
-Missing-value checks
-
-Analytical dataset creation
-
-Total System Load
-
-Net Daily Intake
-
-Care Load Growth Rate
-
-7-Day and 14-Day rolling loads
-
-Backlog Indicator
-
-Pressure Analysis
-
-Highest Net Daily Intake: 206 on 12 February 2024, with system load 8,522.
-
-Positive intake days: 238
-
-Negative intake days: 475
-
-Zero intake days: 7
-
-Pressure days: 33.06%
-
-Correlation with Total System Load
-
-Variable
-
-Correlation
-
-HHS Care
-
-0.9995
-
-HHS Discharged
-
-0.9200
-
-Transferred Out of CBP
-
-0.7331
-
-Apprehended / Placed in CBP
-
-0.7100
-
-CBP Custody
-
-0.6900
-
-Net Daily Intake
-
--0.4600
-
-Correlation indicates association in this dataset and does not establish causation.
-
-🔮 Six-Month ARIMA Forecast
-
-Month
-
-Forecast
-
-Jan 2026
-
-2,718.97
-
-Feb 2026
-
-2,970.64
-
-Mar 2026
-
-3,204.21
-
-Apr 2026
-
-3,421.01
-
-May 2026
-
-3,622.21
-
-Jun 2026
-
-3,808.96
-
-Modelled January-to-June change: +1,089.99 (+40.09%).
-
-🖥️ Dashboard Features
-
-Interactive date filters
-
-KPI cards
-
-Operational trend charts
-
-Pressure analysis
-
-HHS discharge analysis
-
-Monthly performance
-
-Six-month forecast
-
-Forecast metrics/table
-
-Key insights
-
-Dataset details
-
-CSV download
-
-🛠️ Technology Stack
-
-Python • Pandas • NumPy • Plotly • Statsmodels • Streamlit • Jupyter Notebook • Git • GitHub • Streamlit Cloud
-
-📁 Project Structure
-
-System-Capacity-Care-Load-Analytics/
-├── dashboard/
-│   └── app.py
-├── data/
-│   └── Data_Processed/
-│       ├── analytics_data.csv
-│       └── 6_month_forecast.csv
-├── notebooks/
-├── reports/
-├── README.md
-├── requirements.txt
-└── .gitignore
-
-⚙️ Run Locally
-
-git clone https://github.com/Roshan943985/System-Capacity-Care-Load-Analytics.git
-cd System-Capacity-Care-Load-Analytics
-pip install -r requirements.txt
-streamlit run dashboard/app.py
-
-🔄 Workflow
-
-Raw Data
-   ↓
-Cleaning & Validation
-   ↓
+This is expected because HHS Care forms the largest component of the calculated Total System Load in the analyzed dataset.
+
+## Forecasting
+
+An **ARIMA time-series model** was used to generate a six-month forecast.
+
+### Forecast Period
+
+**January 2026 – June 2026**
+
+| Month | Forecast |
+|---|---:|
+| Jan 2026 | 2,718.97 |
+| Feb 2026 | 2,970.64 |
+| Mar 2026 | 3,204.21 |
+| Apr 2026 | 3,421.01 |
+| May 2026 | 3,622.21 |
+| Jun 2026 | 3,808.96 |
+
+The forecast indicates an approximately **40.09% increase** from the first to the final forecasted month.
+
+## Interactive Dashboard
+
+The project includes a professional **Streamlit + Plotly dashboard** with:
+
+- KPI cards
+- System Load Trend
+- HHS Care Trend
+- Pressure Analysis
+- Discharge Analysis
+- Monthly Performance
+- Six-Month Forecast
+- Date filters
+- Key business insights
+- Dataset information
+- CSV download functionality
+
+## Technology Stack
+
+- **Python**
+- **Pandas**
+- **NumPy**
+- **Plotly**
+- **Streamlit**
+- **Statsmodels / ARIMA**
+- **Jupyter Notebook**
+- **VS Code**
+- **CSV**
+
+## Project Workflow
+
+```text
+Raw Dataset
+     ↓
+Data Cleaning
+     ↓
+Data Validation
+     ↓
 Feature Engineering
-   ↓
-EDA & KPI Analysis
-   ↓
-Pressure & Monthly Analysis
-   ↓
+     ↓
+EDA
+     ↓
+KPI Analysis
+     ↓
+Pressure Analysis
+     ↓
 Correlation Analysis
-   ↓
+     ↓
+Monthly Analysis
+     ↓
 ARIMA Forecasting
-   ↓
+     ↓
 Streamlit Dashboard
-   ↓
-GitHub + Streamlit Cloud
+     ↓
+Business Insights
+```
 
-📷 Screenshots
+## Project Structure
 
-Create a screenshots/ folder and add these real screenshots from the live dashboard:
+```text
+System_Capacity_Care_Load_Analytics 1
+│
+├── Dashboard
+│   └── app.py
+│
+├── Data
+│   └── Data_Processed
+│       ├── analytics_data.csv
+│       ├── 6_month_forecast.csv
+│       ├── cleaned_data.csv
+│       ├── kpi_summary.csv
+│       └── monthly_dashboard_data.csv
+│
+├── Notebooks
+│
+├── Requirements
+│
+└── Src
+```
 
-![Dashboard Overview](screenshots/dashboard_overview.png)
-![Operational Trends](screenshots/operational_trends.png)
-![Forecast](screenshots/forecast.png)
+## How to Run
 
-Recommended captures:
+### 1. Install dependencies
 
-Full dashboard with KPI cards.
+```bash
+pip install pandas numpy plotly streamlit statsmodels
+```
 
-Operational trends and pressure charts.
+### 2. Open the project directory
 
-Monthly analysis.
+```bash
+cd "C:\Intership\System_Capacity_Care_Load_Analytics 1"
+```
 
-Six-month forecast section.
+### 3. Run the dashboard
 
-💼 Skills Demonstrated
+```bash
+streamlit run Dashboard\app.py
+```
 
-Python/Pandas data analysis, data cleaning, feature engineering, KPI development, data visualization, time-series forecasting, Streamlit dashboard development, Git/GitHub version control, cloud deployment, and analytical reporting.
+The dashboard will open in your browser.
 
-👤 Author
+## Key Business Insights
 
-Roshan Korde
+1. The system reached its highest recorded load of **11,762** on 20 December 2023.
+2. The average system load across the analyzed period was **6,232.77**.
+3. HHS Care showed a very strong relationship with overall system load.
+4. December 2023 recorded the highest monthly average system load at **11,255.26**.
+5. August 2025 recorded the lowest monthly average system load at **2,026.90**.
+6. The ARIMA forecast projects increasing system load from **2,718.97 in January 2026** to **3,808.96 in June 2026**.
 
-Computer Science / Data Analytics Fresher
+## Conclusion
 
-⚠️ Analytical Notes
+This project demonstrates an end-to-end data analytics workflow covering **data cleaning, exploratory analysis, KPI development, pressure analysis, correlation analysis, time-series forecasting, and dashboard development**.
 
-Forecast values are model outputs and are not guaranteed future outcomes. Correlation values describe association in the supplied dataset and should not be interpreted as causal effects.
+The final dashboard converts historical operational data into an interactive analytical tool that can support capacity monitoring, trend identification, and forward-looking planning.
+
+## Author
+
+**Roshan Korde**
+
+**Data Analytics Project — Python | SQL | Excel | Power BI | Streamlit | Plotly**
