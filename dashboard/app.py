@@ -21,14 +21,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DATA_PATH = os.path.join(
     BASE_DIR,
-    "Data",
+    "data",
     "Data_Processed",
     "analytics_data.csv"
 )
 
 FORECAST_PATH = os.path.join(
     BASE_DIR,
-    "Data",
+    "data",
     "Data_Processed",
     "6_month_forecast.csv"
 )
